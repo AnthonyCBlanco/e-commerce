@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
       }
     })
     if(!categoryData) {
-      res.status(404).json({ message: 'No user with this id!' });
+      res.status(404).json({ message: 'No Category with this id!' });
       return;
     } 
   }catch (err){
