@@ -8,12 +8,10 @@ router.get('/', async (req, res) => {
   // find all products
   try{
     const productData = await Product.findAll({
-      include: [{
-        model: Category,
-        model: Tag,
-        all: true,
-        nested: true
-      }]
+      include: [
+        {model: Category},
+        {model: Tag}
+      ]
     })
     res.status(200).json(productData)
   }catch(err){
@@ -129,6 +127,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({message: "No Product with this id"})
       return
     }
+    res.status(200).json(product);
   }catch(err){
     res.status(500).json(err)
   }
